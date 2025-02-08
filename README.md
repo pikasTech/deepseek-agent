@@ -1,7 +1,3 @@
----
-typora-copy-images-to: ./assets
----
-
 # 当 DeepSeek 接管操作系统：智能体(Agent)真能让程序员提前退休？
 
 > 公众号：PikaPython 物联网脚本框架  | 撰稿：李昂 | Thanks to: DeepSeek & OpenAI
