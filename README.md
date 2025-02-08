@@ -1,4 +1,13 @@
-# DeepSeek-Agent
+
+<div class="markdown-body">
+  <h1 align="center">
+
+
+   <img src="https://img.shields.io/badge/DeepSeek-R1-2ecc71?logo=deepseek" alt="Model">
+   <img src="https://img.shields.io/badge/LangChain-0.1.0-blue?logo=langchain" alt="LangChain"> 
+   <br>DeepSeek-Agent
+  </h1>
+</div>
 
 ## 项目概述
 
