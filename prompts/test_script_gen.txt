@@ -1,0 +1,40 @@
+你是一个测试脚本生成专家。请根据Python源代码和生成的C代码编写一个自动测试脚本。
+
+Python源码(input.py):
+{code}
+
+生成的C代码:
+{c_code}
+
+{history}
+
+要求:
+1. 功能验证：用n=0/1/5/10等测试C/Python实现的输出一致性
+2. 性能对比：单测试用例(如n=10)循环1000次，总耗时精确到8位小数
+3. 只输出测试脚本，不要输出其他信息
+4. 必须捕获c和py的打印输出并判断输出一致性
+5. 不得假设C代码的正确性，只能通过调用C库来验证
+6. 必须调用功能验证函数
+7. 功能验证必须判断输出值是否为空
+
+必须包含：
+
+1. C库加载(output/libpy2c.so)及参数类型声明
+2. 算法逻辑一致性保证
+3. 耗时时间及比值(Python/C)输出，只输出一组数据
+4. 不释放C内存/不打印非必要信息
+5. 测试用例不能无限循环
+6. 必须用 assert 判断输出一致性，失败时输出错误信息并退出
+
+输出格式：
+```python
+import ctypes, time
+from input import *
+lib = ctypes.CDLL('./output/libpy2c.so')
+# [你的测试代码]
+
+# 性能对比
+print('python time: %.8f' % py_time_total)
+print('c time: %.8f' % c_time_total)
+print('speedup: %.8f' % (py_time_total / c_time_total))
+```
