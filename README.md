@@ -1,4 +1,53 @@
-# 当 DeepSeek 接管操作系统：智能体(Agent)真能让程序员提前退休？
+# DeepSeek-Agent
+
+## 项目概述
+
+本仓库是一个关于 **Agent（智能体）** 的实验性 DEMO 项目，主要展示如何利用大语言模型（LLM）在计算机上执行“自动化代码编写”、“文件系统探索”等操作。项目基于 DeepSeek R1 系列模型做了一些初步探索，希望借此分享经验与心得，也为更多对 Agent 感兴趣的开发者提供参考。
+
+## 目录结构
+
+```
+├── chains
+│   └── factory.py ------------------ LLM 链式调用工厂，用于统一加载并管理提示模板
+├── core
+│   ├── pipeline.py ----------------- 核心流水线，实现 Python 代码到 C 语言的转换与测试
+│   ├── piplinebase.py -------------- 流水线基础类，提供 LLM 调用、结果保存、代码清洗等通用功能
+│   └── romingbot.py ---------------- 文件系统探索机器人，支持目录漫游、笔记生成及简单命令执行
+├── prompts
+│   ├── c_code_gen.txt -------------- Python 转 C 的代码生成提示模板
+│   ├── history_builder_chain.txt ---- 代码开发与测试历史记录的生成模板
+│   ├── result_report_gen.txt -------- 系统状态和结果报告的生成提示模板
+│   └── sa_chain.txt ----------------- 静态分析报告的生成提示模板
+├── utils
+│   ├── openai_client.py ------------- OpenAI 客户端封装类，简化与 OpenAI API 的交互
+│   ├── compiler.py ------------------- C 代码编译和测试工具，支持自动化编译和执行
+│   ├── logger.py --------------------- 分级调试日志系统，支持多级别日志输出与存储
+│   ├── output.py --------------------- 输出目录管理器，自动备份旧目录并生成新输出路径
+│   └── parser.py --------------------- JSON 报告解析工具，支持多种容错和正则匹配解析
+├── config.py ------------------------- 配置文件，包含 OpenAI API、模型与运行参数
+├── input.py -------------------------- 示例 Python 脚本（矩阵乘法实现），作为待转换代码
+├── main.py --------------------------- 主程序入口，整合 Python->C 转换与自动化执行功能
+├── requirements.txt ------------------ 依赖库说明，包括 LangChain、OpenAI 与 Pygments 等
+```
+
+## 快速上手
+
+1. 安装依赖：
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **配置参数：**
+   在 `config.py` 中填写你的 OpenAI API Key 及相关模型配置。
+
+3. 运行主程序：
+
+   ```bash
+   python main.py # Python -> C 的转换器需要在 linux 环境下，安装 gcc 工具链
+   ```
+
+# 技术报告：当 DeepSeek 接管操作系统：智能体(Agent)真能让程序员提前退休？
 
 > 公众号：PikaPython 物联网脚本框架  | 撰稿：李昂 | Thanks to: DeepSeek & OpenAI
 
